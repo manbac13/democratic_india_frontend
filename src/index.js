@@ -6,6 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Provider } from "react-redux";
+import store, {persistor} from "./Store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const darkTheme = createTheme({
   palette: {
@@ -18,7 +21,11 @@ root.render(
   <ThemeProvider theme={darkTheme}>
     <React.StrictMode>
       <CssBaseline />
-      <App />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
+      </Provider>
     </React.StrictMode>
   </ThemeProvider>
 );

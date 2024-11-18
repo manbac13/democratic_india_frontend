@@ -2,7 +2,6 @@
 
 .appbar {
   width: 100%;
-  z-index: 9999;
+  z-index: 1;
   border: none;
-  padding-inline: 100px;
 }
