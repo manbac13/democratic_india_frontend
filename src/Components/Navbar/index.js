@@ -26,6 +26,7 @@ const Navbar = (props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const { selectedItem, setActiveItemAction } = useMenu();
+  const [activeItem, setActiveItem] = useState(selectedItem);
 
   const appItems = [
     {
@@ -98,6 +99,10 @@ const Navbar = (props) => {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
+  useEffect(() => {
+    setActiveItem(selectedItem);
+  }, [selectedItem]);
   return (
     <>
       <AppBar
@@ -163,7 +168,7 @@ const Navbar = (props) => {
                   },
                   cursor: "pointer",
                   fontWeight: 500,
-                  color: selectedItem === item.slug ? "#fff" : "#adadad",
+                  color: activeItem === item.slug ? "#fff" : "#adadad",
                   lineHeight: "24px",
                 }}
                 onClick={() => {

@@ -1,10 +1,12 @@
 import { Button, useTheme } from "@mui/material";
 import { Data } from "iconsax-react";
 import { useNavigate } from "react-router-dom";
+import useMenu from "../../Hooks/Menu/useMenu";
 
-const HyperlinkButton = ({ title, route }) => {
+const HyperlinkButton = ({ title, route, slug }) => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const { setActiveItemAction } = useMenu();
   return (
     <Button
       variant="contained"
@@ -23,7 +25,10 @@ const HyperlinkButton = ({ title, route }) => {
           color={`${theme.palette.primary.dark}`}
         />
       }
-      onClick={() => navigate(`/${route}`)}
+      onClick={() => {
+        navigate(`/${route}`);
+        setActiveItemAction(slug);
+      }}
     >
       {title}
     </Button>

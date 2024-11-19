@@ -66,7 +66,7 @@ const HeroSection = () => {
           alignItems: "center",
         }}
       >
-        <HyperlinkButton title={"Explore"} route={'explore'}/>
+        <HyperlinkButton title={"Explore"} route={'explore'} slug={'explore'}/>
       </Stack>
     </>
   );

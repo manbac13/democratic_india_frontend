@@ -7,8 +7,10 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Provider } from "react-redux";
-import store, {persistor} from "./Store";
+import store, { persistor } from "./Store";
 import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const darkTheme = createTheme({
   palette: {
@@ -24,6 +26,7 @@ root.render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
+          <ToastContainer />
         </PersistGate>
       </Provider>
     </React.StrictMode>
