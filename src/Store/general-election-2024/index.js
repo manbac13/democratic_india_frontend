@@ -6,7 +6,7 @@ const initialState = {
   statesList: [],
   pcList: [],
   candidates: [],
-  activeTab: "",
+  activeTab: "cards",
   filters: {
     state: null,
     pcname: null,
