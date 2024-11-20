@@ -36,7 +36,9 @@ const General2024 = () => {
     <>
       <Grid2
         container
-        sx={{ paddingInline: { xs: "12px", sm: "12px", md: "50px", lg: '100px' } }}
+        sx={{
+          paddingInline: { xs: "12px", sm: "12px", md: "50px", lg: "100px" },
+        }}
         justifyContent={"center"}
         alignItems={"center"}
       >
@@ -62,6 +64,9 @@ const General2024 = () => {
                 <TabList
                   onChange={handleChange}
                   aria-label="lab API tabs example"
+                  variant="scrollable"
+                  // scrollButtons="auto"
+                  sx={{ maxWidth: { xs: 300, sm: 480, md: '100%' } }}
                 >
                   <Tab
                     sx={{ textTransform: "capitalize" }}

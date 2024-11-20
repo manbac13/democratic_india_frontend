@@ -6,10 +6,10 @@ const Explore = () => {
     <>
       <Grid2
         container
-        sx={{ paddingInline: "100px" }}
+        sx={{ paddingInline: { xs: "10px", sm: "20px", md: "100px" } }}
         justifyContent={"center"}
       >
-        <Grid2 size={12} sx={{mt: 8}}>
+        <Grid2 size={12} sx={{ mt: 8 }}>
           <ExploreHero />
         </Grid2>
       </Grid2>
