@@ -2,9 +2,10 @@ import { Grid2, Skeleton, Stack } from "@mui/material";
 import EmptyPlaceholder from "../../../Components/EmptyPlaceholder";
 import useGeneral2024 from "../../../Hooks/general-election-2024/useGeneral2024";
 import CandidateCard from "../../../Components/CandidateCard";
+import CandidatesTable from "./candidatesTable";
 
 const Candidates = () => {
-  const { candidates, dataloading } = useGeneral2024();
+  const { candidates, dataloading, activeTab } = useGeneral2024();
   return (
     <>
       {candidates?.length <= 0 ? (
@@ -26,11 +27,17 @@ const Candidates = () => {
         </Grid2>
       ) : (
         <Grid2 container mt={4} mb={3} spacing={3}>
-          {candidates.map((item, index) => (
-            <Grid2 key={index} size={4}>
-              <CandidateCard data={item} />
+          {activeTab === "cards" &&
+            candidates.map((item, index) => (
+              <Grid2 key={index} size={{ xs: 12, sm: 6, md: 6, lg: 4 }}>
+                <CandidateCard data={item} />
+              </Grid2>
+            ))}
+          {activeTab === "table" && (
+            <Grid2 size={12}>
+              <CandidatesTable />
             </Grid2>
-          ))}
+          )}
         </Grid2>
       )}
     </>

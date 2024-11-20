@@ -5,7 +5,7 @@ import { Autoplay } from "swiper/modules";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 const cards = [
-  { title: "General Elections 2024", route: "general-elections-2024" },
+  { title: "General Elections 2024", subTitle: 'Seat Wise Data', route: "general-elections-2024" },
   { title: "State Assemblies", route: "state-assemblies" },
   { title: "Indian Voters", route: "indian-voters" },
   { title: "Dashboard", route: "dashboard" },
@@ -31,7 +31,7 @@ const ExploreHero = () => {
       >
         {cards.map((item) => (
           <SwiperSlide>
-            <Servicecard title={item.title} route={item.route} />
+            <Servicecard title={item.title} subTitle={item.subTitle} route={item.route} />
           </SwiperSlide>
         ))}
       </Swiper>

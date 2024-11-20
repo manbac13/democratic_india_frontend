@@ -15,13 +15,14 @@ import {
 import "./index.css";
 import { useEffect, useState } from "react";
 import { HambergerMenu } from "iconsax-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useMenu from "../../Hooks/Menu/useMenu";
 
 const drawerWidth = 240;
 
 const Navbar = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -103,6 +104,7 @@ const Navbar = (props) => {
   useEffect(() => {
     setActiveItem(selectedItem);
   }, [selectedItem]);
+  console.log("location", location);
   return (
     <>
       <AppBar
@@ -110,8 +112,10 @@ const Navbar = (props) => {
         className="appbar"
         sx={{
           backgroundColor: "#121212",
-          paddingY: 6,
+          paddingTop: 3,
+          paddingBottom: location.pathname === "/general-elections-2024" ? 1 : 6,
           paddingInline: { xs: "20px", sm: "20px", md: "100px" },
+          transition: '0.5s ease-in-out'
         }}
         elevation={0}
       >

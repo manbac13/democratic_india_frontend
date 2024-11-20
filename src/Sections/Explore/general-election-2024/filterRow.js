@@ -1,5 +1,8 @@
 import {
   Autocomplete,
+  Button,
+  ButtonGroup,
+  IconButton,
   Stack,
   TextField,
   Typography,
@@ -10,6 +13,7 @@ import { Formik } from "formik";
 import { useAsyncDebounce } from "react-table";
 import * as Yup from "yup";
 import useGeneral2024 from "../../../Hooks/general-election-2024/useGeneral2024";
+import { Grid8, Personalcard } from "iconsax-react";
 
 const FilterRow = ({
   states,
@@ -19,7 +23,8 @@ const FilterRow = ({
   getAllCandidatesAction,
   setFiltersAction,
 }) => {
-  const { stateFilter, pcnameFilter } = useGeneral2024();
+  const { stateFilter, pcnameFilter, seActiveButtonAction, activeTab } =
+    useGeneral2024();
   const theme = useTheme();
   const smallSS = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -55,10 +60,10 @@ const FilterRow = ({
               alignItems={"center"}
               spacing={1}
             >
-              <Stack>
+              <Stack sx={{ maxWidth: { sm: "100%", md: "50%" } }}>
                 <Typography
                   sx={{
-                    fontSize: "20px",
+                    fontSize: "16px",
                     color: theme.palette.grey[500],
                     fontWeight: "bold",
                     overflow: "hidden",
@@ -67,11 +72,11 @@ const FilterRow = ({
                   }}
                 >
                   {values.state && values.pcname
-                    ? `Parliamentary Constituency: ${values.pcname} (${values.state})`
+                    ? `Constituency Name: ${values.pcname} (${values.state})`
                     : "Select state and constituency"}
                 </Typography>
               </Stack>
-              <Stack direction={"row"} spacing={2}>
+              <Stack direction={smallSS ? "column" : "row"} spacing={2}>
                 <Autocomplete
                   size="small"
                   disablePortal
@@ -119,6 +124,29 @@ const FilterRow = ({
                   name="pcname"
                   disabled={loading}
                 />
+
+                <ButtonGroup variant="outlined" aria-label="Basic button group">
+                  <IconButton onClick={() => seActiveButtonAction("cards")}>
+                    <Personalcard
+                      size="24"
+                      color={
+                        activeTab === "cards"
+                          ? theme.palette.primary.dark
+                          : theme.palette.grey[300]
+                      }
+                    />
+                  </IconButton>
+                  <IconButton onClick={() => seActiveButtonAction("table")}>
+                    <Grid8
+                      size="24"
+                      color={
+                        activeTab === "table"
+                          ? theme.palette.primary.dark
+                          : theme.palette.grey[300]
+                      }
+                    />
+                  </IconButton>
+                </ButtonGroup>
               </Stack>
             </Stack>
           </form>

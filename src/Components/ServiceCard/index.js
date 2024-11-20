@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const Servicecard = ({ title, route }) => {
+const Servicecard = ({ title, route, subTitle }) => {
   const theme = useTheme();
   const navigate = useNavigate();
   return (
@@ -35,6 +35,7 @@ const Servicecard = ({ title, route }) => {
           >
             {title}
           </Typography>
+          {/* <Typography textAlign={'center'}>{subTitle}</Typography> */}
         </CardContent>
         <CardActions>
           <Button

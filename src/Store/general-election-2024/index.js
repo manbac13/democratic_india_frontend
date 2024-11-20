@@ -6,6 +6,7 @@ const initialState = {
   statesList: [],
   pcList: [],
   candidates: [],
+  activeTab: "",
   filters: {
     state: null,
     pcname: null,
@@ -73,6 +74,9 @@ const generalElectionSlice = createSlice({
       state.filters.state = statename;
       state.filters.pcname = pcname;
     },
+    setActiveButton: (state, action) => {
+      state.activeTab = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -114,8 +118,15 @@ const generalElectionSlice = createSlice({
   },
 });
 
-const { setCandidates, setFilters } = generalElectionSlice.actions;
+const { setCandidates, setFilters, setActiveButton } = generalElectionSlice.actions;
 
 export default generalElectionSlice.reducer;
 
-export { getAllStates, getAllPcnames, getAllCandidates, setCandidates, setFilters };
+export {
+  getAllStates,
+  getAllPcnames,
+  getAllCandidates,
+  setCandidates,
+  setFilters,
+  setActiveButton
+};

@@ -1,0 +1,57 @@
+/* Dark theme table container */
+.table-container {
+    /* max-width: 800px; */
+    margin: 4px auto;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #121212; /* Dark background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* General table styling */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    color: #e0e0e0; /* Light text for dark theme */
+  }
+  
+  /* Header styling */
+  .styled-table th {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px;
+    border-bottom: 1px solid #333;
+  }
+  
+  /* Cell styling */
+  .styled-table td {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+  }
+  
+  /* Alternating row colors for dark theme */
+  .row-even {
+    background-color: #1c1c1c; /* Slightly lighter dark */
+  }
+  
+  .row-odd {
+    background-color: #121212; /* Pure dark */
+  }
+  
+  /* Hover effect for rows */
+  .styled-table tr:hover {
+    background-color: #272727; /* Highlight row on hover */
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .styled-table th,
+    .styled-table td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  

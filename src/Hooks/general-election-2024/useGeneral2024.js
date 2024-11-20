@@ -3,6 +3,7 @@ import {
   getAllCandidates,
   getAllPcnames,
   getAllStates,
+  setActiveButton,
   setCandidates,
   setFilters,
 } from "../../Store/general-election-2024";
@@ -30,6 +31,9 @@ function useGeneral2024() {
   const pcnameFilter = useSelector(
     (state) => state?.generalElection2024?.filters?.pcname
   );
+  const activeTab = useSelector(
+    (state) => state?.generalElection2024?.activeTab
+  );
 
   //actions
   const getAllStatesAction = (params) => dispatch(getAllStates(params));
@@ -38,6 +42,7 @@ function useGeneral2024() {
     dispatch(getAllCandidates(params));
   const setCandidatesAction = (params) => dispatch(setCandidates(params));
   const setFiltersAction = (params) => dispatch(setFilters(params));
+  const seActiveButtonAction = (params) => dispatch(setActiveButton(params));
 
   return {
     filterLoading,
@@ -47,12 +52,14 @@ function useGeneral2024() {
     dataloading,
     stateFilter,
     pcnameFilter,
+    activeTab,
 
     getAllStatesAction,
     getAllPCNamesAction,
     getAllCandidatessAction,
     setCandidatesAction,
     setFiltersAction,
+    seActiveButtonAction,
   };
 }
 
