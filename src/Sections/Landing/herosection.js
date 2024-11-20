@@ -5,7 +5,12 @@ import HyperlinkButton from "../../Components/HlButtons";
 const HeroSection = () => {
   return (
     <>
-      <Grid2 container spacing={2} justifyContent={"center"} mt={8}>
+      <Grid2
+        container
+        spacing={2}
+        justifyContent={"center"}
+        mt={{ xs: 2, sm: 2, md: 8 }}
+      >
         <Grid2 size={12}>
           <Stack
             direction={"row"}
@@ -66,7 +71,7 @@ const HeroSection = () => {
           alignItems: "center",
         }}
       >
-        <HyperlinkButton title={"Explore"} route={'explore'} slug={'explore'}/>
+        <HyperlinkButton title={"Explore"} route={"explore"} slug={"explore"} />
       </Stack>
     </>
   );

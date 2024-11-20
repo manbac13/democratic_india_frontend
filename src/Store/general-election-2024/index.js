@@ -7,6 +7,8 @@ const initialState = {
   pcList: [],
   candidates: [],
   activeTab: "cards",
+  resultForChart: [],
+  resultForTable: [],
   filters: {
     state: null,
     pcname: null,
@@ -54,6 +56,32 @@ const getAllCandidates = createAsyncThunk(
   async (params, { rejectWithValue }) => {
     try {
       const res = await GeneralElectionApi.getAllCandidates(params);
+      return res.data;
+    } catch (error) {
+      rejectWithValue(error);
+      toast.error("Something went wrong!", { position: "bottom-right" });
+    }
+  }
+);
+
+const getResultsForChart = createAsyncThunk(
+  "GeneralElections2024/getResultsForChart",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await GeneralElectionApi.getResultsForChart();
+      return res.data;
+    } catch (error) {
+      rejectWithValue(error);
+      toast.error("Something went wrong!", { position: "bottom-right" });
+    }
+  }
+);
+
+const getResultsForTable = createAsyncThunk(
+  "GeneralElections2024/getResultsForTable",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await GeneralElectionApi.getResultsForTable();
       return res.data;
     } catch (error) {
       rejectWithValue(error);
@@ -114,11 +142,32 @@ const generalElectionSlice = createSlice({
       })
       .addCase(getAllCandidates.rejected, (state) => {
         state.ui.loading = false;
+      })
+      .addCase(getResultsForChart.pending, (state) => {
+        state.ui.loading = true;
+      })
+      .addCase(getResultsForChart.fulfilled, (state, action) => {
+        state.resultForChart = action.payload;
+        state.ui.loading = false;
+      })
+      .addCase(getResultsForChart.rejected, (state) => {
+        state.ui.loading = false;
+      })
+      .addCase(getResultsForTable.pending, (state) => {
+        state.ui.loading = true;
+      })
+      .addCase(getResultsForTable.fulfilled, (state, action) => {
+        state.resultForTable = action.payload;
+        state.ui.loading = false;
+      })
+      .addCase(getResultsForTable.rejected, (state) => {
+        state.ui.loading = false;
       });
   },
 });
 
-const { setCandidates, setFilters, setActiveButton } = generalElectionSlice.actions;
+const { setCandidates, setFilters, setActiveButton } =
+  generalElectionSlice.actions;
 
 export default generalElectionSlice.reducer;
 
@@ -128,5 +177,7 @@ export {
   getAllCandidates,
   setCandidates,
   setFilters,
-  setActiveButton
+  setActiveButton,
+  getResultsForChart,
+  getResultsForTable,
 };

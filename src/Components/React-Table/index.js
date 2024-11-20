@@ -1,8 +1,10 @@
 import React from "react";
 import { useTable } from "react-table";
 import "./index.css";
+import { useTheme } from "@mui/styles";
 
 const CommonReactTable = ({ data, columns }) => {
+  const theme = useTheme();
   // Use the useTable hook from react-table
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });

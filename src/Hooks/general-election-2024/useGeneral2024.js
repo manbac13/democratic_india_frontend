@@ -3,6 +3,8 @@ import {
   getAllCandidates,
   getAllPcnames,
   getAllStates,
+  getResultsForChart,
+  getResultsForTable,
   setActiveButton,
   setCandidates,
   setFilters,
@@ -34,6 +36,12 @@ function useGeneral2024() {
   const activeTab = useSelector(
     (state) => state?.generalElection2024?.activeTab
   );
+  const resultForChart = useSelector(
+    (state) => state?.generalElection2024?.resultForChart?.data
+  );
+  const resultForTable = useSelector(
+    (state) => state?.generalElection2024?.resultForTable?.data
+  );
 
   //actions
   const getAllStatesAction = (params) => dispatch(getAllStates(params));
@@ -43,6 +51,8 @@ function useGeneral2024() {
   const setCandidatesAction = (params) => dispatch(setCandidates(params));
   const setFiltersAction = (params) => dispatch(setFilters(params));
   const seActiveButtonAction = (params) => dispatch(setActiveButton(params));
+  const getResultsForChartAction = () => dispatch(getResultsForChart());
+  const getResultsForTableAction = () => dispatch(getResultsForTable());
 
   return {
     filterLoading,
@@ -53,6 +63,8 @@ function useGeneral2024() {
     stateFilter,
     pcnameFilter,
     activeTab,
+    resultForChart,
+    resultForTable,
 
     getAllStatesAction,
     getAllPCNamesAction,
@@ -60,6 +72,8 @@ function useGeneral2024() {
     setCandidatesAction,
     setFiltersAction,
     seActiveButtonAction,
+    getResultsForChartAction,
+    getResultsForTableAction,
   };
 }
 

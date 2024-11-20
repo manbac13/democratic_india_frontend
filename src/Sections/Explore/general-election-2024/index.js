@@ -6,6 +6,8 @@ import FilterRow from "./filterRow";
 import useGeneral2024 from "../../../Hooks/general-election-2024/useGeneral2024";
 import { useEffect, useState } from "react";
 import Candidates from "./candidates";
+import ResultsForChart from "./result";
+import PartyWiseResult from "./partyWise";
 
 const General2024 = () => {
   const theme = useTheme();
@@ -27,7 +29,6 @@ const General2024 = () => {
 
   useEffect(() => {
     if (statesList?.length <= 0) {
-      console.log("reached useffect");
       getAllStatesAction({ state: "state" });
     }
   }, []);
@@ -66,7 +67,7 @@ const General2024 = () => {
                   aria-label="lab API tabs example"
                   variant="scrollable"
                   // scrollButtons="auto"
-                  sx={{ maxWidth: { xs: 300, sm: 480, md: '100%' } }}
+                  sx={{ maxWidth: { xs: 300, sm: 480, md: "100%" } }}
                 >
                   <Tab
                     sx={{ textTransform: "capitalize" }}
@@ -85,8 +86,32 @@ const General2024 = () => {
                   />
                 </TabList>
               </Box>
-              <TabPanel value="1"></TabPanel>
-              <TabPanel value="2">Item Two</TabPanel>
+              <TabPanel value="1">
+                <Grid2
+                  size={12}
+                  sx={{
+                    mt: 4,
+                    display: "flex",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                    height: "60vh",
+                  }}
+                >
+                  <ResultsForChart />
+                </Grid2>
+              </TabPanel>
+              {/* 2 */}
+              <TabPanel value="2">
+                <Grid2
+                  size={12}
+                  sx={{
+                    mt: 1,
+                  }}
+                >
+                  <PartyWiseResult />
+                </Grid2>
+              </TabPanel>
+              {/* 3 */}
               <TabPanel value="3">
                 <Grid2
                   size={12}

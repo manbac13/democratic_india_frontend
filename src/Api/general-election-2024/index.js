@@ -13,3 +13,11 @@ export const getAllCandidates = (params) => {
     `/filters/getAllCandidates/?state=${params.state}&pcname=${params.pcname}`
   );
 };
+
+export const getResultsForChart = () => {
+  return instance.get("/results/forchart");
+};
+
+export const getResultsForTable = () => {
+  return instance.get("/results");
+};
