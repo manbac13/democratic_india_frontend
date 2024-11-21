@@ -21,7 +21,7 @@ const PartyWiseResult = () => {
   ];
   return (
     <>
-      <CommonReactTable data={resultForTable} columns={columns} />
+      <CommonReactTable data={resultForTable || []} columns={columns} />
     </>
   );
 };

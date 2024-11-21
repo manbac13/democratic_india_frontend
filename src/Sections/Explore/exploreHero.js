@@ -6,8 +6,6 @@ import { useMediaQuery, useTheme } from "@mui/material";
 
 const cards = [
   { title: "General Elections 2024", subTitle: 'Seat Wise Data', route: "general-elections-2024" },
-  { title: "State Assemblies", route: "state-assemblies" },
-  { title: "Indian Voters", route: "indian-voters" },
   { title: "Dashboard", route: "dashboard" },
 ];
 
