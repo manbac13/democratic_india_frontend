@@ -31,7 +31,7 @@ const LoksabhaChart = ({ data }) => {
     } else if (width < 960) {
       setFontSize("10px");
     } else {
-      setFontSize("12px");
+      setFontSize("10px");
     }
   };
 

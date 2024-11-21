@@ -16,8 +16,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { numberFormatter } from "../../../Utils/common";
 
-const RajyasabhaChart = ({ data }) => {
+const IndianPopulation = ({ data }) => {
   const theme = useTheme();
 
   const [fontSize, setFontSize] = useState("10px");
@@ -61,7 +62,7 @@ const RajyasabhaChart = ({ data }) => {
           </Typography>
           <Typography
             sx={{ fontSize: "12px", fontWeight: 600 }}
-          >{`${payload[0].value} seats`}</Typography>
+          >{`${numberFormatter(payload[0].value)} crore`}</Typography>
         </Stack>
       );
     }
@@ -73,7 +74,7 @@ const RajyasabhaChart = ({ data }) => {
         <CardHeader
           title={
             <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
-              Statewise Rajyasabha seats
+              Indian Population (2011)
             </Typography>
           }
         />
@@ -87,8 +88,8 @@ const RajyasabhaChart = ({ data }) => {
               margin={{ bottom: 30 }}
             >
               <Bar
-                dataKey="rajya_sabha_seats"
-                fill={theme.palette.error.dark}
+                dataKey="population_2011"
+                fill={theme.palette.primary.dark}
               />
               <Tooltip content={<CustomTooltip />} />
               <XAxis
@@ -102,7 +103,7 @@ const RajyasabhaChart = ({ data }) => {
                 textAnchor="end"
                 dx={-10}
               />
-              <YAxis />
+              <YAxis style={{ fontSize: fontSize }} tickFormatter={(value)=> `${numberFormatter(value)}`}/>
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -111,4 +112,4 @@ const RajyasabhaChart = ({ data }) => {
   );
 };
 
-export default RajyasabhaChart;
+export default IndianPopulation;

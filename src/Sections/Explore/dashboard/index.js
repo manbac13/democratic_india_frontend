@@ -3,6 +3,7 @@ import LoksabhaChart from "./loksabhaSeats";
 import useDashboard from "../../../Hooks/dashboard/useDashboard";
 import { useEffect } from "react";
 import RajyasabhaChart from "./rajyasabhaSeats";
+import IndianPopulation from "./indianPopulation";
 
 const Dashboard = () => {
   const { getDshboardDataAction, stateWiseData } = useDashboard();
@@ -17,6 +18,7 @@ const Dashboard = () => {
         spacing={2}
         sx={{
           paddingInline: { xs: "12px", sm: "12px", md: "50px", lg: "100px" },
+          mb: 2
         }}
       >
         <Grid2 size={{ lg: 6, md: 12, sm: 12, xs: 12 }} >
@@ -24,6 +26,9 @@ const Dashboard = () => {
         </Grid2>
         <Grid2 size={{ lg: 6, md: 12, sm: 12, xs: 12 }}>
           <RajyasabhaChart data={stateWiseData} />
+        </Grid2>
+        <Grid2 size={{xs: 12}}>
+          <IndianPopulation data={stateWiseData}/>
         </Grid2>
       </Grid2>
     </>
