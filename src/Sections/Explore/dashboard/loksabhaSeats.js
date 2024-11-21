@@ -7,6 +7,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { useEffect, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -18,6 +19,29 @@ import {
 
 const LoksabhaChart = ({ data }) => {
   const theme = useTheme();
+
+  const [fontSize, setFontSize] = useState("10px");
+
+  const handleResize = () => {
+    const width = window.innerWidth;
+    if (width < 500) {
+      setFontSize("6px");
+    } else if (width < 600) {
+      setFontSize("8px");
+    } else if (width < 960) {
+      setFontSize("10px");
+    } else {
+      setFontSize("12px");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -55,7 +79,7 @@ const LoksabhaChart = ({ data }) => {
         />
         <Divider />
         <CardContent sx={{ height: "340px" }}>
-          <ResponsiveContainer width='100%' height='100%'>
+          <ResponsiveContainer width="100%" height="100%">
             <BarChart
               width={600}
               height={300}
@@ -67,7 +91,7 @@ const LoksabhaChart = ({ data }) => {
               <XAxis
                 dataKey="state"
                 angle={-45}
-                style={{ fontSize: "10px" }}
+                style={{ fontSize: fontSize }}
                 height={50}
                 tickLine={false}
                 axisLine={false}
